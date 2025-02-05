@@ -1,104 +1,38 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import altair as alt
 
+### DAY 15 ###
 
+st.header('st.latex')
 
-# Header und Selectbox
-st.header('st.selectbox')
-color_array = ['Blue', 'Red', 'Green']
-pantone_colors = {
-    "Blue": "#0033A0",   # Beispiel: Pantone 286 C
-    "Red": "#DA291C",    # Beispiel: Pantone 485 C
-    "Green": "#009639",   # Beispiel: Pantone 347 C
-    "Yellow": "#FFD700",  # Beispiel: Pantone 109 C
-}
-# Dynamische Erstellung des Range-Arrays, indem für jeden Wert in color_array der entsprechende Hex-Code aus dem Dictionary abgefragt wird
-color_range = [pantone_colors[color] for color in color_array]
+st.latex(r'''
+     a + ar + a r^2 + a r_2^3 + \cdots + a r_{n-2}^{n-1} =
+     \sum_{k=0}^{n-1} ar^k =
+     a \left(\frac{1-r^{n}}{1-r}\right)
+     ''')
 
+### DAY 16 ###
 
-### DAY 10 ###
+st.title('Customizing the theme of Streamlit apps')
 
-# indem wir st.selectbox einer vaiablen zuweisen, können wir den Wert später verwenden
-option = st.selectbox(
-    'What is your favorite color?',
-    color_array
-)
+st.write('Contents of the `.streamlit/config.toml` file of this app')
 
-st.write('Your favorite color is ', option)
+st.code("""
+[theme]
+primaryColor="#000000"
+backgroundColor="#000000"
+secondaryBackgroundColor="#AED6F1"
+textColor="#FFFFFF"
+font="monospace"
+""")
 
-st.write('Pantone color code:', pantone_colors[option])
+number = st.sidebar.slider('Select a number:', 0, 10, 5)
+st.write('Selected number from slider widget is:', number*12)
 
-# mit index kann ein Standardwert festgelegt werden
-st.selectbox('Select a color:', color_array, index=2)
+text = st.sidebar.text_input('Enter a text wit a number:', number)
 
-### DAY 11 ###
-st.header('st.multiselect')
+### DAY 17 ###
+st.title('st.secrets')
 
-options = st.multiselect(
-     'What are your favorite colors',
-     ['Green', 'Yellow', 'Red', 'Blue'],
-     ['Yellow', 'Red'], # Standardwerte
-     max_selections=2) # Maximale Anzahl an auswählbaren Optionen
-    
+st.write(st.secrets['message'])
 
-st.write('You selected:', options)
-
-
-### DAY 9 ###
-
-# Header für das Liniendiagramm
-st.header('Line chart')
-
-# Erzeugen eines DataFrames mit zufälligen Daten
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=color_array
-)
-
-# Umformen des DataFrames in ein "long"-Format, damit Altair die Daten gruppieren kann
-chart_data_long = chart_data.reset_index().melt(id_vars='index', 
-                                                var_name='color', 
-                                                value_name='value')
-
-# Definieren einer Farbschlüsselung (Scale), die den Spaltennamen die entsprechenden Farben zuweist
-color_scale = alt.Scale(
-    domain=color_array,
-    range=color_range
-)
-
-# Erstellen des Altair-Diagramms: 
-# - x-Achse: der Index (hier als Zeit oder Reihenfolge zu verstehen)
-# - y-Achse: die Werte
-# - color: Die Spalte "color" wird gemäß der definierten Farbschlüsselung eingefärbt.
-chart = alt.Chart(chart_data_long).mark_line().encode(
-    x=alt.X('index:Q', title='Index'),
-    y=alt.Y('value:Q', title='Value'),
-    color=alt.Color('color:N', scale=color_scale, title='Color')
-).properties(
-    width=600,
-    height=400,
-    title="Line Chart mit benutzerdefinierten Farben"
-)
-
-st.altair_chart(chart, use_container_width=True)
-
-### DAY 12 ###
-st.header('st.checkbox')
-
-st.write ('What would you like to order?')
-
-icecream = st.checkbox('Ice cream')
-coffee = st.checkbox('Coffee', value=True)
-cola = st.checkbox('Cola')
-lemonade = st.checkbox('Lemonade', disabled = ("Red" in option), label_visibility = "collapsed" if "Green" in option else "visible") # label hat ein komisches Verhalten, wenn es auf "collapsed" gesetzt wird, da dann die checkbox weiterhin angezeigt wird, aber das label nicht mehr sichtbar ist
-
-if icecream:
-     st.write("Great! Here's some more 🍦")
-
-if coffee: 
-     st.write("Okay, here's some tasty coffee ☕")
-
-if cola:
-     st.write("Here you go 🥤")
+st.write("nicht verraten! " + ", ".join([st.secrets['geheimnis'][x] for x in st.secrets['geheimnis']]))

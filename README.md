@@ -58,4 +58,16 @@ Es gibt mit `st.multiselect` auch die Möglichkeit eine Mehrfachauswahl zu ermö
 `st.checkbox` kann genutzt werden um ja wow checkboxes zu erstllen. Das Ausblenden ist irgendiwe merkwürdig, da lediglich das Label und nicht die Checkbox ausgeblendet wird. Naa, der Usecase muss dann angeschaut werden, wenn man ihn brauch. Man kann ja auch die checkbox hinter einem if statement legen. 
 
 ## Day 13
-GitHub Codespace test
+GitHub Codespace test. Joa ehrlich gesagt war das nicht so erfolgreich. Habe zwar ein Codespace erstellt aber dann die App nicht dort zum Laufen bekommen. Hatte dann auch keine Lust mehr weiter herumzuprobieren.
+
+## Day 14
+Ja super, mit der Komponente läuft man direkt in einen Error rein. Auch keine Lust das zu debuggen.
+
+## Day 15
+Okay cool. man kann mit `st.latex` Formeln in Latex darstellen.
+
+## Day 16
+Wenn man ein `config.toml` File anlegt um den Style zu ändern, dann muss die App neu gelateden werden mit dem `streamlit run streamlit_app.py` befehl, da ansonsten das ConfigFile nicht berücksichtigt wird.
+
+## Day 17
+Anscheinend speichert man secrets in `.streamlit.secrets.toml`. Ich frage mich was das für einen Unterschied macht zu Secrets die man in einer `.env` speichern würde
