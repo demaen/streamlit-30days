@@ -53,3 +53,9 @@ Auswahlboxen kann man easy mit `st.selectbox` erstellen. Die Auswahl kann man da
 
 ## Day 11
 Es gibt mit `st.multiselect` auch die Möglichkeit eine Mehrfachauswahl zu ermöglichen.
+
+## Day 12
+`st.checkbox` kann genutzt werden um ja wow checkboxes zu erstllen. Das Ausblenden ist irgendiwe merkwürdig, da lediglich das Label und nicht die Checkbox ausgeblendet wird. Naa, der Usecase muss dann angeschaut werden, wenn man ihn brauch. Man kann ja auch die checkbox hinter einem if statement legen. 
+
+## Day 13
+GitHub Codespace test
