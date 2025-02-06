@@ -74,3 +74,6 @@ Anscheinend speichert man secrets in `.streamlit.secrets.toml`. Ich frage mich w
 
 ## Day 18
 Der Upload ist erstmal gefailed weil ich natürlich nicht gelesen hatte, dass man CSVs hochladen soll. Dann mit einem deutsch CSV (also Semicolon getrennt) waren die Daten bescheuert ausgelesen. Habe ich dann als Grund genutzt eine Helper-Function in `helper.py` zu definieren, die ersteinmal schaut welchen delimeter wir nutzen um entsprechend das CSV auszulesen. Dann gings.
+
+## Day 19
+Es geht ans Gestalten der Webseite. Dafür wurde der Screen wide gestellt, eine Sidebar erstellt und Eingabefelder berücksichtigt. Das schöne ist, es gibt [hier](https://docs.streamlit.io/develop/api-reference/layout) viele tolle Module. Schau sie dir mal an.
