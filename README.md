@@ -71,3 +71,6 @@ Wenn man ein `config.toml` File anlegt um den Style zu ändern, dann muss die Ap
 
 ## Day 17
 Anscheinend speichert man secrets in `.streamlit.secrets.toml`. Ich frage mich was das für einen Unterschied macht zu Secrets die man in einer `.env` speichern würde
+
+## Day 18
+Der Upload ist erstmal gefailed weil ich natürlich nicht gelesen hatte, dass man CSVs hochladen soll. Dann mit einem deutsch CSV (also Semicolon getrennt) waren die Daten bescheuert ausgelesen. Habe ich dann als Grund genutzt eine Helper-Function in `helper.py` zu definieren, die ersteinmal schaut welchen delimeter wir nutzen um entsprechend das CSV auszulesen. Dann gings.

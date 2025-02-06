@@ -1,38 +1,29 @@
 import streamlit as st
+import pandas as pd
+from helper import read_csv_autodelim
 
-### DAY 15 ###
+### Day 18 ###
 
-st.header('st.latex')
+st.title('st.file_uploader')
 
-st.latex(r'''
-     a + ar + a r^2 + a r_2^3 + \cdots + a r_{n-2}^{n-1} =
-     \sum_{k=0}^{n-1} ar^k =
-     a \left(\frac{1-r^{n}}{1-r}\right)
-     ''')
+st.subheader('Input CSV')
+uploaded_file = st.file_uploader("Choose a file")
 
-### DAY 16 ###
-
-st.title('Customizing the theme of Streamlit apps')
-
-st.write('Contents of the `.streamlit/config.toml` file of this app')
-
-st.code("""
-[theme]
-primaryColor="#000000"
-backgroundColor="#000000"
-secondaryBackgroundColor="#AED6F1"
-textColor="#FFFFFF"
-font="monospace"
-""")
-
-number = st.sidebar.slider('Select a number:', 0, 10, 5)
-st.write('Selected number from slider widget is:', number*12)
-
-text = st.sidebar.text_input('Enter a text wit a number:', number)
-
-### DAY 17 ###
-st.title('st.secrets')
-
-st.write(st.secrets['message'])
-
-st.write("nicht verraten! " + ", ".join([st.secrets['geheimnis'][x] for x in st.secrets['geheimnis']]))
+if uploaded_file is not None:
+    try:
+        if uploaded_file.name.endswith('.txt'):
+            st.info('Scherzkeks, wir können keine Textdateien lesen')
+            st.subheader('Text File Content')
+            st.write(uploaded_file.getvalue().decode("utf-8"))
+        elif uploaded_file.name.endswith('.csv'):
+            df = read_csv_autodelim(uploaded_file)#pd.read_csv(uploaded_file)
+            st.subheader('DataFrame')
+            st.write(df)
+            st.subheader('Descriptive Statistics')
+            st.write(df.describe())
+        else:
+            st.error(f"Hast Du sicher ein CSV hochgeladen, wir haben probleme beim Auslesen \n Error: {e}")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+else:
+    st.info('☝️ Upload a CSV')
