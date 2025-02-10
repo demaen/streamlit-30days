@@ -89,3 +89,17 @@ Wenn man mit `st.form` Eingaben bündelt, muss man diese mit einem Button der Ap
 
 ## Day 23
 Sofern man über die URL direkt Daten mitgeben und auslesen will, sollte man sich `st.experimental_get_query_params` mal anschauen. Habe ich an dieser Stelle nicht implementiert.
+
+## Day 24
+Man kann anscheinend mit dem **Decorator** `@st.cache_data` Daten cachen, d.h. wenn Daten aus einer externen Quelle gezogen wurden oder ein Dataframe erstellt wurde (innerhalb einer Funktion):
+
+```python
+def my_function():
+     df = pd.DataFrame(
+          np.random.rand(2000000, 5),
+          columns=['a', 'b', 'c', 'd', 'e']
+     )
+     return df
+```
+
+Diese werden gecached und nicht neu errechnet. Das sollte dann beim erneuten Laden den Ladeprozess deutlich beschleunigen. Im Test hat das ergeben, dass es für einen Dataframe zu funktionieren schien, aber bei 2 Dataframes in Funktionen der zweite keinen Geschwindigkeitsgewinn hatte.
