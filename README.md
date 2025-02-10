@@ -77,3 +77,15 @@ Der Upload ist erstmal gefailed weil ich natürlich nicht gelesen hatte, dass ma
 
 ## Day 19
 Es geht ans Gestalten der Webseite. Dafür wurde der Screen wide gestellt, eine Sidebar erstellt und Eingabefelder berücksichtigt. Das schöne ist, es gibt [hier](https://docs.streamlit.io/develop/api-reference/layout) viele tolle Module. Schau sie dir mal an.
+
+## Day 20
+Sicherlich ein spannendes Video über `tech Twitter Space` aber ganz ehrlich, was war nochmal Twitter?
+
+## Day 21
+Man kann Progressbars mit `st.progress` bauen. Da muss man dann iterativ Zahlen hinzufügen. In dem Test läuft das durch einen Loop, kann man evtl sich überlegen ob es sinnvoll wäre eine Progressbar so zu bauen, dass durch if bedingungen oder ähnliches der Progress getrackt wird.
+
+## Day 22
+Wenn man mit `st.form` Eingaben bündelt, muss man diese mit einem Button der App zurückgeben. Das führt dazu, dass die App nicht jedes Mal geladen wird sondern erst beim Ausführen des Buttons.
+
+## Day 23
+Sofern man über die URL direkt Daten mitgeben und auslesen will, sollte man sich `st.experimental_get_query_params` mal anschauen. Habe ich an dieser Stelle nicht implementiert.
