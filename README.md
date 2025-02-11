@@ -103,3 +103,9 @@ def my_function():
 ```
 
 Diese werden gecached und nicht neu errechnet. Das sollte dann beim erneuten Laden den Ladeprozess deutlich beschleunigen. Im Test hat das ergeben, dass es für einen Dataframe zu funktionieren schien, aber bei 2 Dataframes in Funktionen der zweite keinen Geschwindigkeitsgewinn hatte.
+
+## Day 25
+Addingt `statefullness` zur App. Aber was genau bedeutet das? Das bedeutet, dass nicht alles wieder komplett neu geladen wird bei Änderungen sondern sich gewisse Dinge gemerkt werden. Das heißt zuvor eingetragene Daten oder Ähnliches werden beibehalten (soalnge die Session existiert). Dies kann man mit `st.session_state.KEY` oder `st.session_state['KEY']` nutzen, indem man auf einem der beiden Wege auf den State der Variable zugreift.
+
+## Day 26
+APIs kommen ins Game! Da die broing API nicht mehr funktionierte, habe ich eine App geschrieben, die eine Cocktail-API anspricht. Sie hat sogar eine eigene Datei bekommen `streamlit_cocktail_app.py`. Die könnte ich auch mal als "TestStreamlitProjekt" auf Github puplic machen. Dort findet man auch andere ähnliche Projekte, teils mit NLP oder anderen Recommendation Algorithmen. Das kann man sich inspirieren lassen.
